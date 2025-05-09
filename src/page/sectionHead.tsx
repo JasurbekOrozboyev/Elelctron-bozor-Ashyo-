@@ -35,7 +35,7 @@ const SectionHead = () => {
             </div>
         </div>
         <div className="w-[50%] relative">
-            <img className="w-[900px] absolute bottom-0" src={phone} alt="phone" />
+            <img className="w-[900px] absolute bottom-[-38px]" src={phone} alt="phone" />
         </div>
         </div>
         </div>
