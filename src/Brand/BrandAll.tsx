@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 interface Brand {
   id: number;
@@ -32,9 +31,7 @@ const BrandsList: React.FC = () => {
       <ul className="grid grid-cols-4 gap-10">
         {brands.map((brand) => (
           <li key={brand.id} className="h-30 border rounded flex justify-center items-center">
-            <Link to={`/products?brand=${brand.id}`}>
               <h2 className="text-3xl font-black">{brand.name}</h2>
-            </Link>
           </li>
         ))}
         <li>

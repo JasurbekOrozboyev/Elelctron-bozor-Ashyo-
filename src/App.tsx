@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<SectionHead />} />
           <Route path="/brandAll" element={<BrandsList />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/productscategory/:categoryId" element={<ProductsByCategory />} /> {/* categoryId parametrini qabul qiluvchi route */}
+          <Route path="/productscategory/:categoryName" element={<ProductsByCategory />} />
         </Routes>
       </Router>
     </Fragment>

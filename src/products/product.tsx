@@ -1,46 +1,50 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 interface Product {
   id: number;
   name: string;
-  price: number;
-  image: string;
   description: string;
-  brand_id: string;
+  category_name: string; // bu backenddagi kategoriya nomi
+  // boshqa fieldlar
 }
 
-const Products: React.FC = () => {
+const ProductsByCategory = () => {
+  const { categoryName } = useParams<{ categoryName: string }>(); // name olingan
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get('https://api.ashyo.fullstackdev.uz/products')
-      .then((response) => {
-        setProducts(response.data.items);
-        setLoading(false);
+      .get("https://api.ashyo.fullstackdev.uz/products")
+      .then((res) => {
+        const filtered = res.data.filter(
+          (product: Product) =>
+            product.category_name?.toLowerCase() === categoryName?.toLowerCase()
+        );
+        setProducts(filtered);
       })
-      .catch(() => {
-        setLoading(false);
-      });
-  }, []);
+      .catch((err) => {
+        console.error("Mahsulotlar yuklanmadi:", err);
+      })
+      .finally(() => setLoading(false));
+  }, [categoryName]);
 
-  if (loading) return <p>Yuklanmoqda...</p>;
+  if (loading) return <div>Yuklanmoqda...</div>;
+
+  if (products.length === 0) return <div>Mahsulot topilmadi.</div>;
 
   return (
-    <div className="max-w-[1180px] h-[275px] m-auto mt-15">
-      <ul className="grid grid-cols-3 gap-10">
-        {products.map((product) => (
-          <li key={product.id} className="border rounded p-4">
-            <h3 className="text-xl">{product.name}</h3>
-            <p className="text-gray-500">{product.description}</p>
-            <p className="text-lg font-bold">{product.price} UZS</p>
-          </li>
-        ))}
-      </ul>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {products.map((product) => (
+        <div key={product.id} className="border rounded p-4 shadow">
+          <h3 className="font-bold">{product.name}</h3>
+          <p>{product.description}</p>
+        </div>
+      ))}
     </div>
   );
 };
 
-export default Products;
+export default ProductsByCategory;

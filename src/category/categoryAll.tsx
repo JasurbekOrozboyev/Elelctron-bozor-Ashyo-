@@ -46,11 +46,12 @@ const Categories = () => {
           className="border rounded shadow flex justify-center items-center md:mt-3 md:h-10 active:bg-gray-400 transition-all duration-200"
         >
           <Link
-            to={`/productscategory/${cat.id}`}  
-            className="md:text-[16px] font-semibold"
-          >
-            {cat.name}
-          </Link>
+  to={`/productscategory/${cat.name}`} 
+  className="md:text-[16px] font-semibold"
+>
+  {cat.name}
+</Link>
+
         </div>
       ))}
     </div>
