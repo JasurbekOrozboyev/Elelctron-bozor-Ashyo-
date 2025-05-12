@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { Toolbar, Button } from '@mui/material';
+import AuthModal from '../Auth/AuthModal';
 import { Input } from "@/components/ui/input"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faMagnifyingGlass, faScaleUnbalancedFlip, faHeart, faCartShopping, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -11,10 +14,11 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-  } from "@/components/ui/select"
+  } from "@/components/ui/select";
 
 
 function Headers () {
+    const [open, setOpen] = useState(false);
     return (
        <header className="container max-w-[1440px] m-auto">
         <div className='h-10 flex justify-between items-center bg-[#EBEFF3]'>
@@ -35,7 +39,7 @@ function Headers () {
                 </ul>
             </div>
             <div>
-                <ul className='flex justify-between items-center gap-7 md:p-4 mr-[130px]'>
+                <ul className='flex justify-between items-center gap-7 md:p-4 mr-[80px]'>
                     <li className=" md:hidden block">
                     <div className="flex items-center">
                     <img src={Icon} className="w-34" alt="Icon" />
@@ -62,10 +66,17 @@ function Headers () {
                         </SelectContent>
                     </Select>
                     </li>
+                    <li>
+                        <Toolbar sx={{ justifyContent: 'space-between' }}>
+                        <Button variant="outlined" onClick={() => setOpen(true)}>Login</Button>
+                        </Toolbar>
+
+                    <AuthModal open={open} onClose={() => setOpen(false)} />
+                    </li>
                 </ul>
             </div>
         </div>
-            <main className='h-22 border flex justify-center items-center'>
+            <main className='h-22 flex justify-center items-center'>
                 <div className='flex justify-between items-center gap-20'>
                     <ul className='flex items-center'>
                         <li className="md:block hidden">
@@ -77,8 +88,12 @@ function Headers () {
                     </ul>
                     <ul className='flex items-center gap-[10px]'>
                         <li className="md:hidden">
-                        <select className='w-30 h-10 ml-10   bg-[#134E9B] text-white rounded'>
-                            <option value="#">Kategoriya</option>
+                        <select className='w-30 h-10 ml-10 pl-2  bg-white rounded'>
+                            <option value="#">Kategoriya 1</option>
+                            <option value="#">Kategoriya 2</option>
+                            <option value="#">Kategoriya 3</option>
+                            <option value="#">Kategoriya 4</option>
+                            <option value="#">Kategoriya 5</option>
                         </select>
                         </li>
                         <li className="md:block hidden">

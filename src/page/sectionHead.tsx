@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import phone from '../img/sectionHead/phone.svg'
 import { useState } from "react";
+import BrandsList from "@/Brand/BrandAll";
 
 
 const SectionHead = () => {
@@ -47,6 +48,7 @@ const SectionHead = () => {
                 <img className="absolute w-[292px] top-9 right-[-50px]" src={phone} alt="phon" />
             </div>
         </div>
+        <BrandsList/>
         
     </div>
   );

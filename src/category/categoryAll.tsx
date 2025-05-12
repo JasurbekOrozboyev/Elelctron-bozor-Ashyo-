@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from "react-router-dom";
 
 interface Category {
   id: number;
@@ -40,8 +41,16 @@ const Categories = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-7 md:gap-4">
       {categories.map((cat) => (
-        <div key={cat.id} className="border rounded shadow flex justify-center items-center  md:mt-3 md:h-10 active:bg-gray-400 transition-all duration-200">
-          <button className="md:text-[16px]  font-semibold ">{cat.name}</button>
+        <div
+          key={cat.id}
+          className="border rounded shadow flex justify-center items-center md:mt-3 md:h-10 active:bg-gray-400 transition-all duration-200"
+        >
+          <Link
+            to={`/productscategory/${cat.id}`}  
+            className="md:text-[16px] font-semibold"
+          >
+            {cat.name}
+          </Link>
         </div>
       ))}
     </div>
