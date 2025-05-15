@@ -34,13 +34,13 @@ const ProductDetails: React.FC = () => {
 
   return (
     <div className="max-w-[1440px] mx-auto p-4">
-        <h2 className='text-5xl font-bold'>{product.name}</h2>
+        <h2 className='text-3xl font-bold'>{product.name}</h2>
     <div className='flex justify-between gap-5'>
         <ul className='w-[50%] flex gap-10 items-center mt-3'>
             <li className='flex flex-col gap-12'>
-                 <img className="bg-[#EBEFF3] w-40 p-10" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
-                  <img className="bg-[#EBEFF3] w-40 p-10" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
-                   <img className="bg-[#EBEFF3] w-40 p-10" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
+                 <img className="bg-[#EBEFF3] w-40 p-10 rounded" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
+                  <img className="bg-[#EBEFF3] w-40 p-10 rounded" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
+                   <img className="bg-[#EBEFF3] w-40 p-10 rounded" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
             </li>
             <li> 
                 <img className="bg-[#EBEFF3] p-10" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
@@ -48,15 +48,15 @@ const ProductDetails: React.FC = () => {
         </ul>
         
       <div className='w-[50%] '>
-      {product.price && <p className="text-3xl font-bold mb-2">Narxi: {product.price} so'm</p>}
+      {product.price && <p className="text-2xl font-bold mb-2">Narxi: {product.price} so'm</p>}
       {product.nasiya && (
         <h3 className="mb-4">
-          <span className='text-3xl font-bold'>Nasiya:</span> <span className='text-2xl'>{product.nasiya} / {Math.round(product.price! / parseInt(product.nasiya))} so'm</span>
+          <span className='text-2xl font-bold'>Nasiya:</span> <span className='text-2xl'>{product.nasiya} / {Math.round(product.price! / parseInt(product.nasiya))} so'm</span>
         </h3>
       )}
       <p className='text-2xl font-serif'>Malumot:</p>
       <p className='font-serif text-xl'>{product.description}</p>
-      <button className='w-full h-15 rounded bg-[#EBEFF3]'>
+      <button className='w-full h-15 rounded bg-[#EBEFF3] mt-5'>
         <span className='text-2xl'>{product.nasiya} / {Math.round(product.price! / parseInt(product.nasiya))} so'm</span>
       </button>
       <div className='flex justify-between items-center gap-10 mt-5'>
