@@ -4,7 +4,10 @@ import { Fragment } from 'react';
 import SectionHead from './page/sectionHead';
 import BrandsList from './Brand/BrandAll';
 import Products from './products/product';
-import ProductsByCategory from './products/productscategory'; // Kategoriya bo'yicha mahsulotlarni ko'rsatadigan komponent
+import ProductsByCategory from './products/productscategory'; 
+import ProductBrand from './products/productBrand'
+import ProductsAll from './products/productsAll';
+import ProductDetails from './products/productdetails'
 
 function App() {
   return (
@@ -15,7 +18,11 @@ function App() {
           <Route path="/" element={<SectionHead />} />
           <Route path="/brandAll" element={<BrandsList />} />
           <Route path="/products" element={<Products />} />
+           <Route path="/products/brand/:brandId" element={<ProductBrand />} />
+           <Route path="/brand/:brandId" element={<ProductBrand />} />
           <Route path="/productscategory/:categoryName" element={<ProductsByCategory />} />
+          <Route path="/productsAll" element={<ProductsAll />} />
+           <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
       </Router>
     </Fragment>

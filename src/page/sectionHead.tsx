@@ -2,10 +2,12 @@ import { Button } from "@/components/ui/button"
 import phone from '../img/sectionHead/phone.svg'
 import { useState } from "react";
 import BrandsList from "@/Brand/BrandAll";
+import ProductsAll from "@/products/productsAll";
 
 
 const SectionHead = () => {
     const [activeIndex, setActiveIndex] = useState(3); 
+    
 
     const dots = [0, 1, 2, 3, 4];
   
@@ -49,7 +51,11 @@ const SectionHead = () => {
             </div>
         </div>
         <BrandsList/>
-        
+        <div className="flex flex-col gap-10">
+            <ProductsAll/>
+            <ProductsAll/>
+            <ProductsAll/>
+        </div>
     </div>
   );
 };

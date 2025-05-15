@@ -1,45 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-interface Brand {
-  id: number;
-  name: string;
-}
-
-const BrandsList: React.FC = () => {
-  const [brands, setBrands] = useState<Brand[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    axios.get('https://api.ashyo.fullstackdev.uz/brands/all')
-      .then((response) => {
-        setBrands(response.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError('Ma\'lumotni olishda xatolik yuz berdi.');
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <h2 className='text-center'>Yuklanmoqda...</h2>;
-  if (error) return <p>{error}</p>;
+const Brend: React.FC = () => {
+  const brands = [
+    { id: 1, name: 'Artel' },
+    { id: 2, name: 'Samsung' },
+    { id: 3, name: 'Nokia' },
+    { id: 4, name: 'MI' },
+    { id: 5, name: 'Aple' },
+    { id: 6, name: 'Vivo' },
+    { id: 7, name: 'Huawei' }
+  ];
 
   return (
-    <div className="max-w-[1180px] h-[275px] m-auto mt-15">
-      <ul className="grid grid-cols-4 gap-10">
+    <div className="max-w-6xl mx-auto mt-10 p-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         {brands.map((brand) => (
-          <li key={brand.id} className="h-30 border rounded flex justify-center items-center">
-              <h2 className="text-3xl font-black">{brand.name}</h2>
-          </li>
+          <Link key={brand.id} to={`/products/brand/${brand.id}`} className="h-18 px-4 py-2 rounded border text-center flex justify-center items-center">
+            <p className='text-2xl font-bold'> {brand.name}</p>
+          </Link>
         ))}
-        <li>
-            <button className='w-full rounded h-30 border text-3xl font-bold'>Ko'proq</button>
-        </li>
-      </ul>
+        <button className='border rounded text-2xl font-bold'>Ko'proq</button>
+      </div>
     </div>
   );
 };
 
-export default BrandsList;
+export default Brend;

@@ -1,27 +1,22 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import axios from "axios";
-import Slider from './slider'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faScaleUnbalancedFlip, faCartShopping} from '@fortawesome/free-solid-svg-icons';
+import Slider from './slider'
+import { Link } from 'react-router-dom';
 
 
 interface Product {
   id: number;
   name: string;
-  description: string;
-  price: number;
+  price?: number;
+  brand_id: string; 
   nasiya:string;
-  image: string;
-  category: {
-    id: number;
-    name: string;
-    image: string;
-  };
 }
 
-const ProductsByCategory = () => {
-  const brands = [
+const ProductBrand: React.FC = () => {
+    const brands = [
   { id: 1, name: 'Artel' },
   { id: 2, name: 'Samsung' },
   { id: 3, name: 'Nokia' },
@@ -30,30 +25,23 @@ const ProductsByCategory = () => {
   { id: 6, name: 'Vivo' },
   { id: 7, name: 'Huawei' }
 ];
-  const { categoryName } = useParams<{ categoryName: string }>(); 
+
+
+  const { brandId } = useParams<{ brandId: string }>();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("https://api.ashyo.fullstackdev.uz/products")
+    axios.get('https://api.ashyo.fullstackdev.uz/products')
       .then((res) => {
-        const items = res.data.items || [];
-        const filtered = items.filter(
-          (product: Product) =>
-            product.category?.name?.toLowerCase() === categoryName?.toLowerCase()
-        );
+        const all = res.data.items;
+        const filtered = all.filter((p: Product) => p.brand_id === brandId);
         setProducts(filtered);
-      })
-      .catch((err) => {
-        console.error("Mahsulotlar yuklanmadi:", err);
-      })
-      .finally(() => setLoading(false));
-  }, [categoryName]);
+        setLoading(false);
+      });
+  }, [brandId]);
 
-  if (loading) return <div className="p-4">Yuklanmoqda...</div>;
-
-  
+  if (loading) return <div className="text-center mt-6">Yuklanmoqda...</div>;
 
   return (
     <div className=" max-w-[1440px] m-auto mt-5">
@@ -94,20 +82,23 @@ const ProductsByCategory = () => {
         </ul>
       </div>
       <div className="mt-[33px]">
-              <h2 className="mb-1 font-bold">Brend</h2>
-              <ul className="grid grid-cols-3 gap-2">
-                  {brands.map((brand) => (
-                  <li key={brand.id}>
-                  <Link to={`/brand/${brand.id}`}>
-                      <div className="bg-white rounded-full text-center cursor-pointer py-2 hover:bg-blue-100">
-                      {brand.name}
-                      </div>
-                  </Link>
-                  </li>
-              ))}
-              </ul>
-      
-            </div>
+        <h2 className="mb-1 font-bold">Brend</h2>
+        <ul className="grid grid-cols-3 gap-2">
+          {brands.map((brand) => (
+            <li key={brand.id}>
+              <Link to={`/brand/${brand.id}`}>
+                <div className={`rounded-full text-center cursor-pointer py-2 hover:bg-blue-100 ${
+                  brandId === brand.id.toString() ? 'bg-blue-200' : 'bg-white'
+                }`}>
+                  {brand.name}
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+
+      </div>
       <div className="mt-[33px]">
         <h2 className="mb-1 font-bold">
           Tezkor xotira RAM
@@ -154,29 +145,39 @@ const ProductsByCategory = () => {
 
 
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
-      {products.map((product) => (
-        <div key={product.id} className="border border-gray-300  h-130 rounded p-4 shadow">
-          <img className="bg-[#EBEFF3] p-10" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
-          <h3 className="font-bold text-lg mt-3">{product.name}</h3>
-          <p className="text-gray-600">{product.description}</p>
-          <ul className='flex justify-between items-center mt-3'>
-                <li>
-          <p className="mt-2 font-semibold text-xl text-green-600">{product.price} so'm</p>
-          <p className="mt-2 px-4 py-2 bg-[#FDE9F4] text-[#F34396]"> {product.nasiya} / {Math.round(product.price / parseInt(product.nasiya))} so'm</p>
-                </li>
-                <li className='flex items-center gap-[10px]'>
-                      <FontAwesomeIcon className="text-[24px] border-gray-400 text-gray-600 border p-[12px] rounded hover:bg-[#134E9B] hover:text-white" icon={faScaleUnbalancedFlip} />
-                      <FontAwesomeIcon className="text-[24px] border-gray-400 text-gray-600 border p-[12px] rounded hover:bg-[#134E9B] hover:text-white" icon={faCartShopping} />
-                </li>
-                
-            </ul>
-        </div>
-      ))}
+      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+      <ul className="w-[1000px] h-[450px] gap-6 grid grid-cols-3">
+        {products.map((product) => (
+          <li key={product.id} className="rounded p-4 shadow">
+            <img className='bg-[#EBEFF3] w-[300px] p-10' src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fs25ultra.png&w=640&q=75" alt="#" />
+            <h3 className="text-xl font-semibold mt-5">{product.name}</h3>
+            <p>Narxi: {product.price} so'm</p>
+            <div className=''>
+                <ul className='flex justify-between items-center'>
+                    <li>
+                        {product.nasiya && product.price && (
+                        <button className="mt-2 px-4 py-2 bg-[#FDE9F4] text-[#F34396]">
+                            {product.nasiya} / {Math.round(product.price / parseInt(product.nasiya))} so'm
+                        </button>
+                        )}
+                    </li>
+                    <li className='flex items-center gap-[10px]'>
+                         <FontAwesomeIcon className="text-[24px] border-gray-400 text-gray-600 border p-[12px] rounded hover:bg-[#134E9B] hover:text-white" icon={faScaleUnbalancedFlip} />
+                         <FontAwesomeIcon className="text-[24px] border-gray-400 text-gray-600 border p-[12px] rounded hover:bg-[#134E9B] hover:text-white" icon={faCartShopping} />
+                    </li>
+                   
+                </ul>
+            </div>
+
+         
+          </li>
+        ))}
+      </ul>
       </div>
       </div>
     </div>
+    
   );
 };
 
-export default ProductsByCategory;
+export default ProductBrand;

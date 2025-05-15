@@ -6,12 +6,11 @@ interface Product {
   id: number;
   name: string;
   description: string;
-  category_name: string; // bu backenddagi kategoriya nomi
-  // boshqa fieldlar
+  category_name: string; 
 }
 
 const ProductsByCategory = () => {
-  const { categoryName } = useParams<{ categoryName: string }>(); // name olingan
+  const { categoryName } = useParams<{ categoryName: string }>(); 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,12 +25,12 @@ const ProductsByCategory = () => {
         setProducts(filtered);
       })
       .catch((err) => {
-        console.error("Mahsulotlar yuklanmadi:", err);
+        console.error("Yuklanmadi:", err);
       })
       .finally(() => setLoading(false));
   }, [categoryName]);
 
-  if (loading) return <div>Yuklanmoqda...</div>;
+  if (loading) return <h2 className="text-center">Yuklanmoqda...</h2>;
 
   if (products.length === 0) return <div>Mahsulot topilmadi.</div>;
 
