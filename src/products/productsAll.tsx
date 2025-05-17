@@ -51,8 +51,12 @@ const SimpleCarousel: React.FC = () => {
       <div className="flex gap-4 overflow-hidden">
   
 {visibleProducts.map(product => (
-  <Link to={`/product/${product.id}`} key={product.id} className="flex-shrink-0 w-1/5 p-2 border rounded block">
-   <img className="bg-[#EBEFF3] p-10" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
+  <Link to={`/product/${product.id}`} key={product.id} className="border border-gray-400  p-2  rounded block">
+   {/* <img className="bg-[#EBEFF3] p-10" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" /> */}
+
+   <div className=' w-70 h-70 flex justify-center items-center'>
+    <img className='w-50 ' src={product.image} alt="#" />
+   </div>
     <h2 className="text-sm font-semibold">{product.name}</h2>
     {product.price && <p className="text-gray-700">{product.price} so'm</p>}
     <ul className='flex justify-between items-center'>

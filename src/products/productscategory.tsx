@@ -157,7 +157,8 @@ const ProductsByCategory = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
       {products.map((product) => (
         <div key={product.id} className="border border-gray-300  h-130 rounded p-4 shadow">
-          <img className="bg-[#EBEFF3] p-10" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
+          {/* <img className="bg-[#EBEFF3] p-10" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" /> */}
+          <img src={product.image} alt={product.name} />
           <h3 className="font-bold text-lg mt-3">{product.name}</h3>
           <p className="text-gray-600">{product.description}</p>
           <ul className='flex justify-between items-center mt-3'>

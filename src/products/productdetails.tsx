@@ -38,12 +38,16 @@ const ProductDetails: React.FC = () => {
     <div className='flex justify-between gap-5'>
         <ul className='w-[50%] flex gap-10 items-center mt-3'>
             <li className='flex flex-col gap-12'>
-                 <img className="bg-[#EBEFF3] w-40 p-10 rounded" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
+                 {/* <img className="bg-[#EBEFF3] w-40 p-10 rounded" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
                   <img className="bg-[#EBEFF3] w-40 p-10 rounded" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
-                   <img className="bg-[#EBEFF3] w-40 p-10 rounded" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
+                   <img className="bg-[#EBEFF3] w-40 p-10 rounded" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" /> */}
+                   <img className="w-80 p-2 rounded" src={product.image} alt={product.name} />
+                   <img className="w-80 p-2 rounded" src={product.image} alt={product.name} />
+                   <img className="w-80 p-2 rounded" src={product.image} alt={product.name} />
             </li>
             <li> 
-                <img className="bg-[#EBEFF3] p-10" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" />
+                {/* <img className="bg-[#EBEFF3] p-10" src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fipad12.png&w=640&q=75" alt="#" /> */}
+                <img className='w-300' src={product.image} alt={product.name} />
                 </li>
         </ul>
         

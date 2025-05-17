@@ -13,6 +13,7 @@ interface Product {
   price?: number;
   brand_id: string; 
   nasiya:string;
+  image:string;
 }
 
 const ProductBrand: React.FC = () => {
@@ -149,7 +150,8 @@ const ProductBrand: React.FC = () => {
       <ul className="w-[1000px] h-[450px] gap-6 grid grid-cols-3">
         {products.map((product) => (
           <li key={product.id} className="rounded p-4 shadow">
-            <img className='bg-[#EBEFF3] w-[300px] p-10' src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fs25ultra.png&w=640&q=75" alt="#" />
+            {/* <img className='bg-[#EBEFF3] w-[300px] p-10' src="https://ashyoabdulaziz.vercel.app/_next/image?url=https%3A%2F%2Fapi.ashyo.fullstackdev.uz%2Fuploads%2F%2Fs25ultra.png&w=640&q=75" alt="#" /> */}
+            <img src={product.image} alt="" />
             <h3 className="text-xl font-semibold mt-5">{product.name}</h3>
             <p>Narxi: {product.price} so'm</p>
             <div className=''>
