@@ -7,7 +7,8 @@ import Products from './products/product';
 import ProductsByCategory from './products/productscategory'; 
 import ProductBrand from './products/productBrand'
 import ProductsAll from './products/productsAll';
-import ProductDetails from './products/productdetails'
+import ProductDetails from './products/productdetails';
+import Profile from './profile/profile'
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
           <Route path="/productscategory/:categoryName" element={<ProductsByCategory />} />
           <Route path="/productsAll" element={<ProductsAll />} />
            <Route path="/product/:id" element={<ProductDetails />} />
+           <Route path="/profile" element={<Profile />} />
+
         </Routes>
       </Router>
     </Fragment>

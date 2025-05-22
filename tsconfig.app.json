@@ -29,5 +29,5 @@
       "@/*": ["src/*"]  // @dan boshlanuvchi importlarni src papkasiga yo‘naltirish
     }
   },
-  "include": ["src"]
+  "include": ["src", "src/Auth/verifyOpt.tsx"]
 }

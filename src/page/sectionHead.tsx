@@ -3,6 +3,7 @@ import phone from '../img/sectionHead/phone.svg'
 import { useState } from "react";
 import BrandsList from "@/Brand/BrandAll";
 import ProductsAll from "@/products/productsAll";
+import Section  from "./section";
 
 
 const SectionHead = () => {
@@ -55,6 +56,9 @@ const SectionHead = () => {
             <ProductsAll/>
             <ProductsAll/>
             <ProductsAll/>
+        </div>
+        <div>
+            <Section/>
         </div>
     </div>
   );

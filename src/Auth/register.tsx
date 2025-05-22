@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Snackbar, Alert } from '@mui/material';
-import SendOtp from './sendOpt';
 
 interface RegisterData {
   fullname: string;
@@ -36,6 +35,7 @@ const Register: React.FC = () => {
 
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('fullname', user.fullname);
+      localStorage.setItem('email', formData.email); 
 
       setSuccessMsg("Ro'yhatdan muvaffaqiyatli o'tdingiz!");
       setOpen(true);
@@ -81,12 +81,10 @@ const Register: React.FC = () => {
           className="w-full border p-2 rounded"
           required
         />
-        <SendOtp/>
-        <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        <button type="submit" className="px-4 py-2 rounded text-white bg-[#0F4A97] hover:bg-[#0980FF]">
           Ro'yxatdan o'tish
         </button>
       </form>
-
       <Snackbar
         open={open}
         autoHideDuration={4000}
